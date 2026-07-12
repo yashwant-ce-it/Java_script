@@ -1,0 +1,337 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<style>
+			html {
+				background-color: hsl(0 0% 100%);
+			}
+			@media (prefers-color-scheme: dark) {
+				html {
+					background-color: hsl(220 7% 9%);
+				}
+			}
+		</style>
+		<script>
+			;(function () {
+				const storageKey = "ui-theme"
+				let storedTheme = "system"
+				try {
+					storedTheme = localStorage.getItem(storageKey) || "system"
+				} catch {
+					storedTheme = "system"
+				}
+
+				let actualTheme
+
+				const allowed = new Set(["light", "dark", "system"])
+				if (!allowed.has(storedTheme)) storedTheme = "system"
+
+				if (storedTheme === "system") {
+					actualTheme = window.matchMedia("(prefers-color-scheme: dark)")
+						.matches
+						? "dark"
+						: "light"
+				} else {
+					actualTheme = storedTheme
+				}
+				document.documentElement.classList.remove("light", "dark")
+				document.documentElement.classList.add(actualTheme)
+				document.documentElement.setAttribute("data-theme", actualTheme)
+
+				if (actualTheme === "dark") {
+					document.documentElement.style.backgroundColor = "hsl(220 7% 9%)"
+				} else {
+					document.documentElement.style.backgroundColor = "hsl(0 0% 100%)"
+				}
+			})()
+		</script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+		</script>
+		<script>
+			;(function (w, d, s, l, i) {
+				try {
+					w[l] = w[l] || []
+					w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
+					var f = d.getElementsByTagName(s)[0],
+						j = d.createElement(s),
+						dl = l != "dataLayer" ? "&l=" + l : ""
+					j.async = true
+					j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl
+					j.onerror = function () {
+						console.warn(
+							"Google Tag Manager failed to load (may be blocked by ad blocker)",
+						)
+					}
+					f.parentNode.insertBefore(j, f)
+				} catch (e) {
+					console.warn("Google Tag Manager initialization failed:", e.message)
+				}
+			})(window, document, "script", "dataLayer", "GTM-5BWLXJRC")
+		</script>
+		<!-- End Google Tag Manager -->
+
+		<!-- Start of HubSpot Embed Code -->
+		<script
+			type="text/javascript"
+			id="hs-script-loader"
+			async
+			defer
+			src="//js.hs-scripts.com/43613284.js"
+			onerror="
+				console.warn('HubSpot failed to load (may be blocked by ad blocker)')
+			"
+		></script>
+		<script type="text/javascript">
+			window.hsConversationsSettings = {
+				loadImmediately: false,
+			}
+		</script>
+		<!-- End of HubSpot Embed Code -->
+
+		<!-- Start of Pylon Chat Embed Code -->
+		<script>
+			;(function () {
+				try {
+					// Only load Pylon if app ID is available
+					const pylonAppId = "2b543a03-da7b-4059-99ee-17612b440923"
+					if (!pylonAppId || pylonAppId.startsWith("%")) {
+						console.warn(
+							"VITE_PYLON_CHAT_APP_ID not found, Pylon chat widget disabled",
+						)
+						// Provide a no-op Pylon function to prevent errors
+						window.Pylon = function () {
+							console.warn("Pylon widget not configured")
+						}
+						return
+					}
+
+					var e = window
+					var t = document
+					var n = function () {
+						n.e(arguments)
+					}
+					n.q = []
+					n.e = function (e) {
+						n.q.push(e)
+					}
+					e.Pylon = n
+					var r = function () {
+						try {
+							var e = t.createElement("script")
+							e.setAttribute("type", "text/javascript")
+							e.setAttribute("async", "true")
+							e.setAttribute(
+								"src",
+								"https://widget.usepylon.com/widget/" + pylonAppId,
+							)
+							e.onerror = function () {
+								console.warn(
+									"Pylon chat widget failed to load (may be blocked by ad blocker)",
+								)
+								// Ensure window.Pylon is defined even if script fails
+								window.Pylon = function () {
+									console.warn("Pylon widget not available")
+								}
+							}
+							var n = t.getElementsByTagName("script")[0]
+							n.parentNode.insertBefore(e, n)
+						} catch (err) {
+							console.warn("Pylon script insertion failed:", err.message)
+						}
+					}
+					if (t.readyState === "complete") {
+						r()
+					} else if (e.addEventListener) {
+						e.addEventListener("load", r, false)
+					}
+				} catch (e) {
+					console.warn("Pylon initialization failed:", e.message)
+					// Provide a no-op Pylon function to prevent errors
+					window.Pylon = function () {
+						console.warn("Pylon widget not available")
+					}
+				}
+			})()
+		</script>
+		<!-- End of Pylon Chat Embed Code -->
+
+		<meta charset="UTF-8" />
+
+		<!-- Theme color with light/dark mode support -->
+		<meta
+			name="theme-color"
+			content="#ffffff"
+			media="(prefers-color-scheme: light)"
+		/>
+		<meta
+			name="theme-color"
+			content="#151619"
+			media="(prefers-color-scheme: dark)"
+		/>
+
+		<!-- Fab icon to support all devices -->
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="CodeRabbit" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Meta Tag Block -->
+
+		<!-- Primary Meta Tags -->
+		<title>CodeRabbit: AI-powered Code Reviews</title>
+		<meta name="title" content="CodeRabbit: AI-powered Code Reviews" />
+		<meta name="description" content="Accelerate Code Reviews with AI" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://coderabbit.ai/" />
+		<meta property="og:title" content="CodeRabbit: AI-powered Code Reviews" />
+		<meta property="og:description" content="Accelerate Code Reviews with AI" />
+		<meta property="og:image" content="/preview_meta.jpg" />
+
+		<!-- Twitter -->
+		<meta
+			name="twitter:image"
+			content="https://coderabbit.ai/preview_meta.jpg"
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="CodeRabbit: AI-powered Code Reviews" />
+		<meta
+			name="twitter:description"
+			content="Accelerate Code Reviews with AI."
+		/>
+
+		<!--  -->
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			http-equiv="Cache-Control"
+			content="no-cache, no-store, must-revalidate"
+		/>
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+		/>
+		<!-- <script src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+		<script
+			type="text/javascript"
+			src="https://assets.calendly.com/assets/external/widget.js"
+			onerror="
+				console.warn('Calendly failed to load (may be blocked by ad blocker)')
+			"
+		></script>
+
+		<!-- Chargebee is loaded on demand from the app -->
+
+		<!-- Add the Montserrat font from Google Fonts -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+		/>
+		<script type="module" crossorigin src="/assets/main-DqjVjwGx.js"></script>
+		<link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-BM3Ffeng.js">
+		<link rel="modulepreload" crossorigin href="/assets/github-dark-default-ewskUoJG.js">
+		<link rel="modulepreload" crossorigin href="/assets/github-light-default-Bj4yFGkp.js">
+		<link rel="modulepreload" crossorigin href="/assets/vendor-react-CxZ095SN.js">
+		<link rel="modulepreload" crossorigin href="/assets/react-icons-1YBG7Hgb.js">
+		<link rel="stylesheet" crossorigin href="/assets/main-D-epbt_E.css">
+	</head>
+
+	<body>
+		<div id="root"></div>
+		<div id="grafana-provider-viewport" style="display: none"></div>
+
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-5BWLXJRC"
+				height="0"
+				width="0"
+				style="display: none; visibility: hidden"
+			></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
+
+		<!-- Start of Customer.io SDK (with In-App) -->
+		<script type="text/javascript">
+			var _cio = _cio || []
+			;(function () {
+				try {
+					var siteId = "1ba53f40916be1c5d27a"
+
+					if (
+						!siteId ||
+						siteId.startsWith("%") ||
+						!/^[a-zA-Z0-9]+$/.test(siteId)
+					) {
+						console.warn("Customer.io: Invalid or missing site ID, disabled")
+						return
+					}
+
+					var createStub = function (methodName) {
+						return function () {
+							_cio.push(
+								[methodName].concat(Array.prototype.slice.call(arguments, 0)),
+							)
+						}
+					}
+
+					var methods = [
+						"load",
+						"identify",
+						"sidentify",
+						"track",
+						"page",
+						"on",
+						"off",
+						"reset",
+					]
+					for (var i = 0; i < methods.length; i++) {
+						_cio[methods[i]] = createStub(methods[i])
+					}
+
+					var script = document.createElement("script")
+					script.async = true
+					script.id = "cio-tracker"
+					script.setAttribute("data-site-id", siteId)
+					script.setAttribute("data-use-array-params", "true")
+					script.setAttribute("data-use-in-app", "true")
+					script.src = "https://assets.customer.io/assets/track.js"
+
+					script.onerror = function () {
+						console.warn(
+							"Customer.io: Failed to load SDK (may be blocked by ad blocker)",
+						)
+					}
+
+					var firstScript = document.getElementsByTagName("script")[0]
+					if (firstScript && firstScript.parentNode) {
+						firstScript.parentNode.insertBefore(script, firstScript)
+					} else {
+						;(document.head || document.body).appendChild(script)
+					}
+				} catch (error) {
+					console.warn("Customer.io: Initialization failed", error)
+				}
+			})()
+		</script>
+		<!-- End of Customer.io SDK -->
+	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"c4ab3fd245964c059e20d55d0420e3f3","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
