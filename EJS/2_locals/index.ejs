@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS</title>
+</head>
+<% if(numberof ) %>
+<body>
+    <form  action="submit" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="Firstname" value="<%= title %>">
+        <label for="second">Second:</label>
+        <input type="text" name="second" value="<%= second %>">
+        <label for="seconds">Seconds:</label>
+        <input type="number" name="seconds" value="<%= seconds %>">
+        <input type="submit" value="Submit">
+</body>
+</html>
